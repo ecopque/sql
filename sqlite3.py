@@ -9,14 +9,7 @@ TABLE_NAME = 'customers'
 var_connection = sqlite3.connect(DATABASE_FILE)
 var_cursor = var_connection.cursor()
 
-var_cursor.execute(
-    f'CREATE TABLE IF NOT EXISTS {TABLE_NAME}'
-    '('
-    'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-    'name TEXT,'
-    'weight REAL'
-    ')'
-)
+var_cursor.execute(f'CREATE TABLE IF NOT EXISTS {TABLE_NAME} (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, weight REAL)')
 
 var_connection.commit()
 var_cursor.close()
