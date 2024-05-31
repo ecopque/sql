@@ -18,6 +18,7 @@ var_connection.commit()
 
 var_sql = f'INSERT INTO {TABLE_NAME} (name, weight) VALUES (?, ?)'
 var_cursor.execute(var_sql, ['Enéas', 100])
+var_cursor.executemany(var_sql, [['Edson', 50], ['Carl', 90] ])
 var_connection.commit()
 
 var_cursor.close()
