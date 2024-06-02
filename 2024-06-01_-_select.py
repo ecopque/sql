@@ -11,6 +11,8 @@ var_cursor.execute(f'SELECT * FROM {TABLE_NAME}')
 # var_row = var_cursor.fetchone() #2:
 # print(var_row) #2:
 
+var_connection.commit()
+
 for in_row in var_cursor.fetchall():
     in_id, in_name, in_weight = in_row
     print(in_id, in_name, in_weight)
