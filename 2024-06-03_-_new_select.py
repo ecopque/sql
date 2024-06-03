@@ -17,11 +17,16 @@ var_cursor.execute(f'CREATE TABLE IF NOT EXISTS {TABLE_NAME} (id INTEGER PRIMARY
 var_connection.commit()
 
 var_sql = f'INSERT INTO {TABLE_NAME} (name, weight) VALUES (?, ?)'
-var_cursor.execute(var_sql, ('Lutz', 100))
+var_cursor.execute(var_sql, ('Edson', 100))
+var_cursor.executemany(var_sql, [('Enéas', 90), ('Carl', 80), ('Baltasar', 70), ('Théo', 60)])
+var_connection.commit()
+
+var_cursor.execute(f'DELETE FROM {TABLE_NAME} WHERE id="1"')
 var_connection.commit()
 
 var_cursor.execute(f'SELECT * FROM {TABLE_NAME}')
 var_connection.commit()
+
 
 for in_row in var_cursor.fetchall():
     in_in, in_name, in_weight = in_row
