@@ -21,12 +21,13 @@ var_cursor.execute(var_sql, ('Edson', 100))
 var_cursor.executemany(var_sql, [('Enéas', 90), ('Carl', 80), ('Baltasar', 70), ('Théo', 60)])
 var_connection.commit()
 
-# var_sql = f'INSERT INTO {TABLE_NAME} (name, weight) VALUES (:name_key, :weight_key)' #1:
-# var_cursor.execute(var_sql, {'name_key': 'Enéas', 'weight_key': 100}) #2:
-# var_cursor.executemany(var_sql, ({'name_key': 'Carl', 'weight_key': 50}, {'name_key': 'Edson', 'weight_key': 60})) #3:
+# var_sql = f'INSERT INTO {TABLE_NAME} (name, weight) VALUES (:name_key, :weight_key)'
+# var_cursor.execute(var_sql, {'name_key': 'Enéas', 'weight_key': 100})
+# var_cursor.executemany(var_sql, ({'name_key': 'Carl', 'weight_key': 50}, {'name_key': 'Edson', 'weight_key': 60}))
 # var_connection.commit()
 
 var_cursor.execute(f'DELETE FROM {TABLE_NAME} WHERE id=1')
+var_cursor.execute(f'UPDATE {TABLE_NAME} SET name="Edsuuu", weight=55.9 WHERE id=5')
 var_connection.commit()
 
 var_cursor.execute(f'SELECT * FROM {TABLE_NAME}')
