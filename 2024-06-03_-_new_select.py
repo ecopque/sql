@@ -21,7 +21,7 @@ var_cursor.execute(var_sql, ('Edson', 100))
 var_cursor.executemany(var_sql, [('Enéas', 90), ('Carl', 80), ('Baltasar', 70), ('Théo', 60)])
 var_connection.commit()
 
-var_cursor.execute(f'DELETE FROM {TABLE_NAME} WHERE id="1"')
+var_cursor.execute(f'DELETE FROM {TABLE_NAME} WHERE id=1')
 var_connection.commit()
 
 var_cursor.execute(f'SELECT * FROM {TABLE_NAME}')
