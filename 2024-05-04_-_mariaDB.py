@@ -1,0 +1,1 @@
+sudo apt purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
