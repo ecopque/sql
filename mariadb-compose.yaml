@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  mariadb_new:
+    container_name: mariadb_new
+    hostname: mariadb_new
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: senha_root
+      MYSQL_DATABASE: base_de_dados
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha_usuario
+      TZ: America/Sao_Paulo
+    volumes:
+      - ./mariadb_new:/var/lib/mysql
+    ports:
+      - 3306:3306
