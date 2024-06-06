@@ -15,7 +15,7 @@ print(os.environ['MYSQL_DATABASE']) #7: #8:
 
 with var_connection: #9:
     with var_connection.cursor() as cursor: #10:
-        cursor.execute('CREATE TABLE customers (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, age INT NOT NULL, PRIMARY KEY (id))')
+        cursor.execute('CREATE TABLE IF NOT EXISTS customers (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, age INT NOT NULL, PRIMARY KEY (id))')
         var_connection.commit()
         print(cursor)
     
