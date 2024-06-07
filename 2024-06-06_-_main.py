@@ -22,9 +22,15 @@ with var_connection: #9:
         print(cursor)
     
     with var_connection.cursor() as cursor: #16:
-        var_result = cursor.execute(f'INSERT INTO {TABLE_NAME} (name, age) VALUES ("Edson", 100)') #17:
-        var_resul2 = cursor.execute(f'INSERT INTO {TABLE_NAME} (name, age) VALUES ("Carl", 100), ("Enéas", 150)') #17:
-        print(var_result)
+        var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%s, %s)'
+        
+        var_data = ('Edson', 100)
+        var_result = cursor.execute(var_sql, var_data)
+        var_data2 = ('Carl', 100), ('Enéas', 150)
+        var_resul2 = cursor.executemany(var_sql, var_data2)
+        
+        print(var_sql, var_data)
+        print(var_sql, var_data2)
         var_connection.commit()
 
 # var_cursor.close() #11:
