@@ -33,5 +33,15 @@ with var_connection: #9:
         print(var_sql, var_data2)
         var_connection.commit()
 
+    with var_connection.cursor() as cursor:
+        var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%(name)s , %(age)s)'
+
+        var_data3 = {'name': 'Gracian', 'age': 125}
+        var_resul3 = cursor.execute(var_sql, var_data3)
+
+        print(var_sql, var_data3)
+        var_connection.commit()
+
+
 # var_cursor.close() #11:
 # var_connection.close() #12:
