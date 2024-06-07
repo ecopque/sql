@@ -24,12 +24,12 @@ with var_connection: #9:
     with var_connection.cursor() as cursor: #16:
         var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%s, %s)'
         
-        var_data = ('Edson', 100)
-        var_result = cursor.execute(var_sql, var_data)
+        var_data1 = ('Edson', 100)
+        var_result = cursor.execute(var_sql, var_data1)
         var_data2 = ('Carl', 120), ('Enéas', 150)
         var_resul2 = cursor.executemany(var_sql, var_data2)
         
-        print(var_sql, var_data)
+        print(var_sql, var_data1)
         print(var_sql, var_data2)
         var_connection.commit()
 
@@ -41,7 +41,6 @@ with var_connection: #9:
 
         print(var_sql, var_data3)
         var_connection.commit()
-
 
 # var_cursor.close() #11:
 # var_connection.close() #12:
