@@ -26,7 +26,7 @@ with var_connection: #9:
         
         var_data = ('Edson', 100)
         var_result = cursor.execute(var_sql, var_data)
-        var_data2 = ('Carl', 100), ('Enéas', 150)
+        var_data2 = ('Carl', 120), ('Enéas', 150)
         var_resul2 = cursor.executemany(var_sql, var_data2)
         
         print(var_sql, var_data)
