@@ -43,5 +43,21 @@ with var_connection: #9:
         print(var_sql, var_data3)
         var_connection.commit()
 
+    with var_connection.cursor() as cursor:
+        var_sql = f'SELECT id, age FROM {TABLE_NAME}'
+        cursor.execute(var_sql)
+
+        var_data_one = cursor.fetchone()
+        print(var_data_one) #AAA:
+
+    with var_connection.cursor() as cursor:
+        var_sql = f'SELECT * FROM {TABLE_NAME}'
+        cursor.execute(var_sql)
+
+        var_data_all = cursor.fetchall()
+        for var_row in var_data_all:
+            print(var_row) #BBB:
+
+
 # var_cursor.close() #11:
 # var_connection.close() #12:
