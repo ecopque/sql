@@ -30,9 +30,9 @@ with var_connection: #9:
         var_data2 = (('Carl', 120), ('Enéas', 150))
         var_resul2 = cursor.executemany(var_sql, var_data2)
         
+        var_connection.commit()
         print(var_sql, var_data1)
         print(var_sql, var_data2)
-        var_connection.commit()
 
     with var_connection.cursor() as cursor:
         var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%(name)s , %(age)s)'
@@ -40,14 +40,14 @@ with var_connection: #9:
         var_data3 = {'name': 'Gracian', 'age': 125}
         var_resul3 = cursor.execute(var_sql, var_data3)
 
-        print(var_sql, var_data3)
         var_connection.commit()
+        print(var_sql, var_data3)
 
     with var_connection.cursor() as cursor:
         var_sql = f'SELECT id, age FROM {TABLE_NAME}'
         cursor.execute(var_sql)
 
-        var_data_one = cursor.fetchone()
+        var_data_one = cursor.fetchone(0, 1)
         print(var_data_one) #AAA:
 
     with var_connection.cursor() as cursor:
