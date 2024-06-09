@@ -59,14 +59,11 @@ with var_connection: #9:
             print(var_row) #BBB:
 
     with var_connection.cursor() as var_cursor:
-        var_sql = f'SELECT * FROM {TABLE_NAME} WHERE id = 3'
+        var_sql = f'SELECT * FROM {TABLE_NAME} WHERE id >= 3'
         var_cursor.execute(var_sql)
         var_data = var_cursor.fetchall()
         var_connection.commit()
+        print(var_cursor.mogrify(var_sql)) #DDD:
 
         for var_row in var_data:
-            print(var_row)
-
-       
-# var_cursor.close() #11:
-# var_connection.close() #12:
+            print(var_row) #CCC:
