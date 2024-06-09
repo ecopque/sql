@@ -15,46 +15,46 @@ var_cursor = var_connection.cursor() #6:
 print(os.environ['MYSQL_DATABASE']) #7: #8:
 
 with var_connection: #9:
-    with var_connection.cursor() as cursor: #10:
-        cursor.execute(f'CREATE TABLE IF NOT EXISTS {TABLE_NAME} (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, age INT NOT NULL, PRIMARY KEY (id))') #13:
-        cursor.execute(f'TRUNCATE TABLE {TABLE_NAME}') #15:
+    with var_connection.cursor() as var_cursor: #10:
+        var_cursor.execute(f'CREATE TABLE IF NOT EXISTS {TABLE_NAME} (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, age INT NOT NULL, PRIMARY KEY (id))') #13:
+        var_cursor.execute(f'TRUNCATE TABLE {TABLE_NAME}') #15:
         var_connection.commit()
-        print(cursor)
+        print(var_cursor)
     
-    with var_connection.cursor() as cursor: #16:
+    with var_connection.cursor() as var_cursor: #16:
         var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%s, %s)'
         
         var_data1 = ('Edson', 100)
-        var_result = cursor.execute(var_sql, var_data1)
+        var_result = var_cursor.execute(var_sql, var_data1)
 
         var_data2 = (('Carl', 120), ('Enéas', 150))
-        var_resul2 = cursor.executemany(var_sql, var_data2)
+        var_resul2 = var_cursor.executemany(var_sql, var_data2)
         
         var_connection.commit()
         print(var_sql, var_data1)
         print(var_sql, var_data2)
 
-    with var_connection.cursor() as cursor:
+    with var_connection.cursor() as var_cursor:
         var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%(name)s , %(age)s)'
 
         var_data3 = {'name': 'Gracian', 'age': 125}
-        var_resul3 = cursor.execute(var_sql, var_data3)
+        var_resul3 = var_cursor.execute(var_sql, var_data3)
 
         var_connection.commit()
         print(var_sql, var_data3)
 
-    with var_connection.cursor() as cursor:
+    with var_connection.cursor() as var_cursor:
         var_sql = f'SELECT id, age FROM {TABLE_NAME}'
-        cursor.execute(var_sql)
+        var_cursor.execute(var_sql)
 
-        var_data_one = cursor.fetchone()
+        var_data_one = var_cursor.fetchone()
         print(var_data_one) #AAA:
 
-    with var_connection.cursor() as cursor:
+    with var_connection.cursor() as var_cursor:
         var_sql = f'SELECT * FROM {TABLE_NAME}'
-        cursor.execute(var_sql)
+        var_cursor.execute(var_sql)
 
-        var_data_all = cursor.fetchall()
+        var_data_all = var_cursor.fetchall()
         for var_row in var_data_all:
             print(var_row) #BBB:
 
