@@ -47,7 +47,7 @@ with var_connection: #9:
         var_sql = f'SELECT id, age FROM {TABLE_NAME}'
         cursor.execute(var_sql)
 
-        var_data_one = cursor.fetchone(0, 1)
+        var_data_one = cursor.fetchone()
         print(var_data_one) #AAA:
 
     with var_connection.cursor() as cursor:
