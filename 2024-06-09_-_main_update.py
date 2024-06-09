@@ -81,7 +81,19 @@ with var_connection: #9:
                 print(var_row)
         except ValueError:
             print("Please enter a valid integer for the id.")
+    print()
+    with var_connection.cursor() as var_cursor:
+        var_input_smaller = input('Type an smaller id: ')
+        var_input_bigger = input('Type an bigger id: ')
+        var_id = 'id'
+        try:
+            var_input_smaller = int(var_input_smaller)
+            var_input_bigger = int(var_input_bigger)
+            var_sql = f'SELECT * FROM {TABLE_NAME} WHERE {var_id} >= %s AND {var_id} <= %s' # BETWEEN %S AND %S
+            var_cursor.execute(var_sql, (var_input_smaller, var_input_bigger))
+            var_data = var_cursor.fetchall()
 
-
-# var_cursor.close() #11:
-# var_connection.close() #12:
+            for var_row in var_data:
+                print(var_row)
+        except ValueError:
+            print('xxx')
