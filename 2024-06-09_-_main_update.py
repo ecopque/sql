@@ -67,3 +67,21 @@ with var_connection: #9:
 
         for var_row in var_data:
             print(var_row) #CCC:
+
+    with var_connection.cursor() as var_cursor:
+        var_input = input('Type an id: ')
+        var_id = 'id'
+        try:
+            var_input = int(var_input)
+            var_sql = f'SELECT * FROM {TABLE_NAME} WHERE {var_id} > %s'
+            var_cursor.execute(var_sql, (var_input,))
+            var_data = var_cursor.fetchall()
+
+            for var_row in var_data:
+                print(var_row)
+        except ValueError:
+            print("Please enter a valid integer for the id.")
+
+
+# var_cursor.close() #11:
+# var_connection.close() #12:
