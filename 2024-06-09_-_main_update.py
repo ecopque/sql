@@ -99,8 +99,8 @@ with var_connection: #9:
             print('xxx')
         
     with var_connection.cursor() as var_cursor:
-        var_sql_delete = f'DELETE FROM {TABLE_NAME}'
-        var_cursor.execute(var_sql_delete)
+        var_sql_delete = f'DELETE FROM {TABLE_NAME} WHERE id = %s'
+        var_cursor.execute(var_sql_delete, (3,))
         var_connection.commit()
 
 
