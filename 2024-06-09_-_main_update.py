@@ -20,7 +20,7 @@ with var_connection: #9:
         var_cursor.execute(f'TRUNCATE TABLE {TABLE_NAME}') #15:
         var_connection.commit()
         print(var_cursor)
-    
+    print()
     with var_connection.cursor() as var_cursor: #16:
         var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%s, %s)'
         
@@ -33,23 +33,23 @@ with var_connection: #9:
         var_connection.commit()
         print(var_sql, var_data1)
         print(var_sql, var_data2)
-
+    print()
     with var_connection.cursor() as var_cursor:
         var_sql = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%(name)s , %(age)s)'
 
-        var_data3 = {'name': 'Gracian', 'age': 125}
+        var_data3 = {'name':'Gracian', 'age':125}
         var_resul3 = var_cursor.execute(var_sql, var_data3)
 
         var_connection.commit()
         print(var_sql, var_data3)
-
+    print()
     with var_connection.cursor() as var_cursor:
         var_sql =  f'SELECT id, age FROM {TABLE_NAME}'
         var_cursor.execute(var_sql)
 
         var_data_one = var_cursor.fetchone()
         print(var_data_one) #AAA:
-
+    print()
     with var_connection.cursor() as var_cursor:
         var_sql = f'SELECT * FROM {TABLE_NAME}'
         var_cursor.execute(var_sql)
@@ -57,7 +57,7 @@ with var_connection: #9:
         var_data_all = var_cursor.fetchall()
         for var_row in var_data_all:
             print(var_row) #BBB:
-
+    print()
     with var_connection.cursor() as var_cursor:
         var_sql = f'SELECT * FROM {TABLE_NAME} WHERE id >= 3'
         var_cursor.execute(var_sql)
@@ -67,7 +67,7 @@ with var_connection: #9:
 
         for var_row in var_data:
             print(var_row) #CCC:
-
+    print()
     with var_connection.cursor() as var_cursor:
         var_input = input('Type an id: ')
         var_id = 'id'
@@ -97,12 +97,31 @@ with var_connection: #9:
                 print(var_row)
         except ValueError:
             print('xxx')
-        
+    print()
+
+    with var_connection.cursor() as var_cursor:
+        var_sql_update = f'UPDATE {TABLE_NAME} SET name=%s, age=%s WHERE id=%s'
+        var_cursor.execute(var_sql_update, ('Rufa', 160, 3,))
+        var_connection.commit()
+
+        var_sql_select = f'SELECT * FROM {TABLE_NAME}'
+        var_cursor.execute(var_sql_select)
+        var_data = var_cursor.fetchall()
+
+        for var_row in var_data:
+            print(var_row)
+
+    print()
     with var_connection.cursor() as var_cursor:
         var_sql_delete = f'DELETE FROM {TABLE_NAME} WHERE id = %s'
         var_cursor.execute(var_sql_delete, (3,))
         var_connection.commit()
 
+        var_sql_select = f'SELECT * FROM {TABLE_NAME}'
+        var_cursor.execute(var_sql_select)
+        var_data = var_cursor.fetchall()
+        for var_row in var_data:
+            print(var_row)
 
 # var_cursor.close() #11:
 # var_connection.close() #12:
