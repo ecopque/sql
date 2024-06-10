@@ -97,3 +97,12 @@ with var_connection: #9:
                 print(var_row)
         except ValueError:
             print('xxx')
+        
+    with var_connection.cursor() as var_cursor:
+        var_sql_delete = f'DELETE FROM {TABLE_NAME}'
+        var_cursor.execute(var_sql_delete)
+        var_connection.commit()
+
+
+# var_cursor.close() #11:
+# var_connection.close() #12:
