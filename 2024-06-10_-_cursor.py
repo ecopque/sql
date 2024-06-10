@@ -34,3 +34,8 @@ with var_connection:
 
         for var_row in var_data:
             print(var_row['name']) #2:
+
+        var_cursor.scroll(-2)
+        # var_cursor.scroll(1)
+        for var_row in var_cursor.fetchall():
+            print(var_row) #3:
