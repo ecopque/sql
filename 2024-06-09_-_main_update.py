@@ -48,7 +48,7 @@ with var_connection: #9:
         var_cursor.execute(var_sql)
 
         var_data_one = var_cursor.fetchone()
-        print(var_data_one) #AAA:
+        print(var_data_one) #18:
     print()
     with var_connection.cursor() as var_cursor:
         var_sql = f'SELECT * FROM {TABLE_NAME}'
@@ -56,17 +56,17 @@ with var_connection: #9:
 
         var_data_all = var_cursor.fetchall()
         for var_row in var_data_all:
-            print(var_row) #BBB:
+            print(var_row) #19:
     print()
     with var_connection.cursor() as var_cursor:
         var_sql = f'SELECT * FROM {TABLE_NAME} WHERE id >= 3'
         var_cursor.execute(var_sql)
         var_data = var_cursor.fetchall()
         var_connection.commit()
-        print(var_cursor.mogrify(var_sql)) #DDD:
+        print(var_cursor.mogrify(var_sql)) #21:
 
         for var_row in var_data:
-            print(var_row) #CCC:
+            print(var_row) #20:
     print()
     with var_connection.cursor() as var_cursor:
         var_input = input('Type an id: ')
@@ -89,7 +89,7 @@ with var_connection: #9:
         try:
             var_input_smaller = int(var_input_smaller)
             var_input_bigger = int(var_input_bigger)
-            var_sql = f'SELECT * FROM {TABLE_NAME} WHERE {var_id} >= %s AND {var_id} <= %s' # BETWEEN %S AND %S
+            var_sql = f'SELECT * FROM {TABLE_NAME} WHERE {var_id} >= %s AND {var_id} <= %s' #17:
             var_cursor.execute(var_sql, (var_input_smaller, var_input_bigger))
             var_data = var_cursor.fetchall()
 
