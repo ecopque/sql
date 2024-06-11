@@ -28,6 +28,7 @@ with var_connection:
         var_sql_select = f'SELECT * FROM {TABLE_NAME}'
         var_cursor.execute(var_sql_select)
         var_data = var_cursor.fetchall()
+        var_connection.commit()
 
         for var_row in var_data:
             print(var_row) #1:
