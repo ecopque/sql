@@ -61,14 +61,23 @@ with var_connection:
         var_data4 = var_cursor.fetchall()
         var_connection.commit()
         
-        print('len(var_data): ', len(var_data)) #5:
-        print('len(var_data4) :', len(var_data4)) #8:
-        print('var_cursor.rowcount: ', var_cursor.rowcount) #6:
+        print('len(var_data):', len(var_data)) #5:
+        print('len(var_data4):', len(var_data4)) #8:
+        print('var_cursor.rowcount:', var_cursor.rowcount) #6:
 
+        print()
+        print('rownumber', var_cursor.rownumber) #10:
+
+        print()
         var_data5 = ('Michigan', 300)
         var_cursor.execute(var_sql_insert, var_data5)
         var_connection.commit()
-        print('var_cursor.lastrowid: ', var_cursor.lastrowid) #7:
+        print('var_cursor.lastrowid:', var_cursor.lastrowid) #7:
+
+        print()
+        var_cursor.execute(f'SELECT id FROM {TABLE_NAME} ORDER BY id DESC LIMIT 1')
+        var_last_id_select = var_cursor.fetchone()
+        print('var_last_id_select:', var_last_id_select) #9:
 
         # var_data = var_cursor.fetchall()
         # print('var_sql_inser: ', len(var_data))
