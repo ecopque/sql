@@ -27,9 +27,11 @@ with var_connection:
         
         var_sql_select = f'SELECT * FROM {TABLE_NAME}'
         var_cursor.execute(var_sql_select)
+
         var_data = var_cursor.fetchall()
         var_connection.commit()
-
+        
+        print()
         for var_row in var_data:
             print(var_row) #1:
 
@@ -47,3 +49,26 @@ with var_connection:
         var_cursor.scroll(2, 'absolute')
         for var_row in var_cursor.fetchall():
             print(var_row) #4:
+
+        print()
+        var_sql_insert = f'INSERT INTO {TABLE_NAME} (name, age) VALUES (%s, %s)'
+        var_data3 = ('Théo', 110)
+        var_cursor.execute(var_sql_insert, var_data3)
+        var_connection.commit()
+
+        var_sql_select = f'SELECT * FROM {TABLE_NAME}'
+        var_cursor.execute(var_sql_select)
+        var_data4 = var_cursor.fetchall()
+        var_connection.commit()
+        
+        print('len(var_data): ', len(var_data)) #5:
+        print('len(var_data4) :', len(var_data4)) #8:
+        print('var_cursor.rowcount: ', var_cursor.rowcount) #6:
+
+        var_data5 = ('Michigan', 300)
+        var_cursor.execute(var_sql_insert, var_data5)
+        var_connection.commit()
+        print('var_cursor.lastrowid: ', var_cursor.lastrowid) #7:
+
+        # var_data = var_cursor.fetchall()
+        # print('var_sql_inser: ', len(var_data))
